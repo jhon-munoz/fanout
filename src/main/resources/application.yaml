@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: fanout
+
+fanout:
+  worker:
+    lease-ttl: 5m
+    poll-interval: 100ms
+    shutdown-grace: 30s
+  concurrency:
+    min: 1
+    initial: 8
+    max: 50
+    decrease-cooldown: 30s
+  retry:
+    max-attempts: 5
+    base-delay: 2s
+    max-delay: 60s
+  breaker:
+    failure-threshold: 10
+    open-for: 30s
+  publish:
+    page-size: 500
+  simulation:
+    latency: 200ms
+    throttle-rate: 0.0
+    transient-failure-rate: 0.0
+    permanent-failure-rate: 0.0
+    template-id: audit-ca
+    base-version: v4
+  demo:
+    enabled: false
+    engagements: 300
+    firms: 5
+    template-id: audit-ca
+    version: v5
